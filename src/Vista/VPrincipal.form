@@ -23,6 +23,12 @@
               <text value="Guardar Eventos"/>
             </properties>
           </component>
+          <component id="c7c9c" class="javax.swing.JButton" binding="cancelarEventosButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Cancelar Eventos"/>
+            </properties>
+          </component>
         </children>
       </toolbar>
       <hspacer id="76cf1">

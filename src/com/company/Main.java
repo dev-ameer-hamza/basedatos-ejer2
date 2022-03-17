@@ -4,6 +4,7 @@ import Modelo.BD.BaseDatos;
 import Modelo.BD.EventosDAO;
 import Modelo.UML.Eventos;
 import Vista.VPrincipal;
+import Vista.VentanaCancelar;
 import Vista.ventanaDatos;
 
 import javax.swing.*;
@@ -17,7 +18,8 @@ public static BaseDatos bd;
 public static EventosDAO eventsoDao;
 
 public static JFrame vp;
-public static JFrame vDatos;
+    public static JFrame vDatos;
+    public static JFrame vCancel;
 
 public static ArrayList<Modelo.UML.Eventos> eventos = new ArrayList<>();
 
@@ -50,11 +52,23 @@ public static ArrayList<Modelo.UML.Eventos> eventos = new ArrayList<>();
         vDatos.setVisible(true);
     }
 
+    public static void ventanaCancelar(){
+        vCancel = new JFrame("Ventana para cancelar eventos");
+        vCancel.setContentPane(new VentanaCancelar().getVentanaCancelar());
+        vCancel.setSize(500,500);
+        vCancel.setLocationRelativeTo(null);
+        vCancel.setVisible(true);
+    }
+
     public static void insertarDatos(String nombre, String lugar, LocalDate fecha, LocalTime hIncio,LocalTime hFin,int personas) throws Exception
     {
         Modelo.UML.Eventos ev = new Eventos(nombre,lugar,fecha,hIncio,hFin,personas);
         eventos.add(ev);
         eventsoDao.insertarEvento(ev);
+    }
+
+    public static void buscarEvent(String ev) throws Exception{
+        eventsoDao.buscar(ev);
     }
 
 }
