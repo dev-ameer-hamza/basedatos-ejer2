@@ -29,6 +29,12 @@
               <text value="Cancelar Eventos"/>
             </properties>
           </component>
+          <component id="44587" class="javax.swing.JButton" binding="actualizarButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Actualizar"/>
+            </properties>
+          </component>
         </children>
       </toolbar>
       <hspacer id="76cf1">

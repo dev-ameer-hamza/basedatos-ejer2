@@ -15,7 +15,7 @@ public class BaseDatos {
         connection = DriverManager.getConnection(this.url,this.usuario,this.pass);
 
         if (connection == null){
-            throw new Exception("Problemas con conxion");
+            throw new Exception("Problemas con conexion");
         }
     }
 
