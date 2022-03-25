@@ -3,6 +3,7 @@ package Modelo.UML;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Eventos {
     private String nombre;
@@ -11,6 +12,7 @@ public class Eventos {
     private LocalTime hora_incio;
     private LocalTime hora_fin;
     private int nPersonas;
+    private ArrayList<Persona> personas;
 
 
     public Eventos(String nombre, String lugar, LocalDate fecha, LocalTime hora_incio, LocalTime hora_fin, int nPersonas) {
@@ -20,9 +22,19 @@ public class Eventos {
         this.hora_incio = hora_incio;
         this.hora_fin = hora_fin;
         this.nPersonas = nPersonas;
+        personas = new ArrayList<>();
     }
 
     public Eventos() {
+        personas = new ArrayList<>();
+    }
+
+    public ArrayList<Persona> getPersonas() {
+        return personas;
+    }
+
+    public void setPersonas(Persona persona) {
+        this.personas.add(persona);
     }
 
     public String getNombre() {

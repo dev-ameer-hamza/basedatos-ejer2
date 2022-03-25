@@ -78,6 +78,14 @@ public class EventosDAO {
         return set;
     }
 
+    public ResultSet eventosLibres() throws Exception{
+        String query = "select * from eventos where personas_apuntadas < no_personas AND (hora_incio > CURRENT_TIME AND fecha > CURRENT_DATE)";
+        PreparedStatement st = connection.prepareStatement(query);
+        ResultSet set = st.executeQuery();
+
+        return set;
+    }
+
     public ResultSet buscarEvPorNombre(String nom) throws SQLException {
         String query = "select * from eventos where nombre=?";
         PreparedStatement st = connection.prepareStatement(query);
@@ -106,5 +114,9 @@ public class EventosDAO {
             JOptionPane.showMessageDialog(null,"Evento no modificados");
             Main.cerrarVentanaActualizar();
         }
+    }
+
+    public void cerrarConexion() throws SQLException {
+        this.connection.close();
     }
 }
