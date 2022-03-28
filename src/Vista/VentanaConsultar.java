@@ -35,6 +35,7 @@ public class VentanaConsultar {
             public void itemStateChanged(ItemEvent e) {
                 try {
                         asistentes = Main.obtenerAsistentes(cbEventos.getSelectedItem().toString());
+                        asistentes.next();
                         nombre.setText(asistentes.getString("nombre"));
                         dni.setText(asistentes.getString("dni"));
                         empresa.setText(asistentes.getString("emp"));
@@ -49,16 +50,40 @@ public class VentanaConsultar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+
                     if (asistentes.next()){
-                        System.out.println("si hay mas personas");
-                        asistentes.next();
                         nombre.setText(asistentes.getString("nombre"));
                         dni.setText(asistentes.getString("dni"));
                         empresa.setText(asistentes.getString("emp"));
                         telefono.setText(asistentes.getString("tel"));
                     }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"No hay mas personas");
+                    }
                 } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null,ex.getMessage());
                     ex.printStackTrace();
+                }
+            }
+        });
+        atrasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    if (asistentes.previous()){
+                        nombre.setText(asistentes.getString("nombre"));
+                        dni.setText(asistentes.getString("dni"));
+                        empresa.setText(asistentes.getString("emp"));
+                        telefono.setText(asistentes.getString("tel"));
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"No hay mas personas");
+                    }
+                }
+                catch(SQLException sqe){
+                    System.out.println(sqe.getMessage());
                 }
             }
         });

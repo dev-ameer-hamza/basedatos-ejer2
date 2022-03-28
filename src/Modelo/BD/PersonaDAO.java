@@ -33,7 +33,7 @@ public class PersonaDAO {
 
     public ResultSet obtenerAsistentes(String event,int id) throws SQLException {
         String query = "select * from personas where event_id=?";
-        PreparedStatement st = connection.prepareStatement(query);
+        PreparedStatement st = connection.prepareStatement(query ,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         st.setInt(1,id);
         return st.executeQuery();
     }
